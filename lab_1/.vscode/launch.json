@@ -1,0 +1,29 @@
+{
+	// Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+	// Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+	// Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "GCC - Сборка и отладка",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/stanislav/Рабочий стол/Information Protection/lab_1/lab_1",
+			"args": [],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Включить автоматическое форматирование для gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "C: GCC build IP_LAB_1",
+			"miDebuggerPath": "/usr/bin/gdb"
+		}
+	]
+}
