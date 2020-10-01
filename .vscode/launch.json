@@ -8,7 +8,7 @@
 			"name": "GCC - Сборка и отладка",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "/home/stanislav/Рабочий стол/Information Protection/lab_1/lab_1",
+			"program": "/home/sse-programmer/Рабочий стол/Information Protection/main",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
@@ -22,7 +22,7 @@
 					"ignoreFailures": true
 				}
 			],
-			"preLaunchTask": "C: GCC build IP_LAB_1",
+			"preLaunchTask": "C: GCC build IP_MAIN",
 			"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]

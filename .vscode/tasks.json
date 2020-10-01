@@ -3,7 +3,7 @@
     "tasks": [
         {
             "type": "shell",
-            "label": "C: GCC build IP_LAB_1",
+            "label": "C: GCC build IP_MAIN",
             "command": "make",
             "args": [
                 "all"
@@ -18,7 +18,7 @@
 		},
 		{
             "type": "shell",
-            "label": "C: GCC clean IP_LAB_1",
+            "label": "C: GCC clean IP_MAIN",
             "command": "make",
             "args": [
                 "clean"
