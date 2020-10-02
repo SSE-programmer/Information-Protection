@@ -58,52 +58,78 @@ int isPrime(long long p)
 }
 
 /*Прим. y = a^x % p; */
-long long BSGS(long long y, long long a, long long p)
+struct BSGS_valid_X BSGS(long long y, long long a, long long p)
 {
-	long long m = (long long)pow(p, 0.5) + 1; /* K == M */
+	long long m = (long long)sqrt(p) + 1; /* K == M */
 
 	long long x = 0;
 
-	long long **U = (long long **)malloc(sizeof(long long *) * (long long)m * 2LL);
+	long long **U = (long long **)malloc(sizeof(long long *) * (long long)m * 2);
 
-	for (int i = 0; i < m * 2; i++)
+	for (long long i = 0; i < m * 2; i++)
 	{
 		U[i] = (long long *)malloc(sizeof(long long) * 2);
 	}
 
-	for (int i = 0; i < m; i++)
+	for (long long i = 0; i < m; i++)
 	{
 		U[i][0] = (long long)y * FME(a, i, p) % p;
-		U[i][1] = i;
+		U[i][1] = i;  //+1 для второго ряда? 
 		U[m + i][0] = FME(a, (long long)m * (i + 1), p);
-		U[m + i][1] = i | 0x8000000000000000;
+		U[m + i][1] = (i + 1) | 0x8000000000000000;
 
 	}
 
-	quickSort(U, 0, (long long)m * 2LL - 1);
+	quickSort(U, 0, (long long)m * 2 - 1);
 
-	for (int i = 0; i < (long long)m * 2LL - 1; i++)
+	int flag = 0;
+
+	for (long long i = 0; i < (long long)m * 2 - 1; i++)
 	{
 		if ((U[i][0] == U[i + 1][0]) && ((U[i][1] & 0x8000000000000000) != (U[i + 1][1] & 0x8000000000000000)))
 		{
-			long long l, h;
+			flag = 1;
+
+			long long l, j;
 
 			if ((U[i][1] & 0x8000000000000000) == 0)
 			{
-				l = U[i][1] & 0x7FFFFFFFFFFFFFFF;
-				h = (U[i + 1][1] + 1) & 0x7FFFFFFFFFFFFFFF;
+				j = U[i][1] & 0x7FFFFFFFFFFFFFFF;
+				l = U[i + 1][1] & 0x7FFFFFFFFFFFFFFF;
 			}
 			else
 			{
-				l = (U[i + 1][1] + 1) & 0x7FFFFFFFFFFFFFFF;
-				h = U[i][1] & 0x7FFFFFFFFFFFFFFF;
+				j = U[i + 1][1] & 0x7FFFFFFFFFFFFFFF;
+				l = U[i][1] & 0x7FFFFFFFFFFFFFFF;
 			}
 
-			x = h * m - l;
+			x = l * m - j;
+
+			break;
 		}
 	}
 
-	return x;
+	long long Y = FME(a, x, p);
+	
+	if (flag)
+	{
+		printf("Y = %lld\n", Y);
+	}
+	
+	struct BSGS_valid_X result;
+
+	if (flag)
+	{
+		result.valid = true;
+		result.x = x;
+	}
+	else
+	{
+		result.valid = false;
+		result.x = -1;
+	}
+
+	return result;
 }
 
 long long DHKG()

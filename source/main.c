@@ -61,7 +61,7 @@ int test_BabyStepGiantStep()
 {
     printf("\n%sФункция:%s %s\n", BEGIN_COLOR_FUNCTION, __FUNCTION__, END_COLOR_FUNCTION);
 
-    long long y = rand() % 1000000000,
+    long long y,
               a = rand() % (1000000000 - 2) + 2,
               p;
 
@@ -70,9 +70,23 @@ int test_BabyStepGiantStep()
         p = rand() % 1000000000;
     } while (isPrime(p) < 1);
 
+    y = rand() % p;
+
     printf("y = %lld, a = %lld, p = %lld\n", y, a, p);
 
-    printf("Шаг младенца, шаг великана: %lld;\n", BSGS(y, a, p));
+    struct BSGS_valid_X result;
+
+    result = BSGS(y, a, p);
+
+    if (result.valid)
+    {
+        printf("Шаг младенца, шаг великана: %lld;\n", result.x);
+    }
+    else
+    {
+        printf("Шаг младенца, шаг великана: решение не найдено;");
+    }
+    
 
     return 0;
 }

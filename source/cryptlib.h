@@ -9,10 +9,18 @@
 
 #define RANGE 1000
 
+typedef enum {false, true} bool;
+
+struct BSGS_valid_X
+{
+    long long x;
+    bool valid;
+};
+
 void quickSort(long long **numbers, long long left, long long right);
 int isPrime(long long p);
 
-long long BSGS(long long y, long long a, long long p);
+struct BSGS_valid_X BSGS(long long y, long long a, long long p);
 //Baby-step Giant-step;
 
 long long DHKG();									 
