@@ -1,4 +1,4 @@
-#include "cryptlib.h"
+#include "cryptbaselib.h"
 
 void quickSort(long long **as, long long left, long long right) //& 0x7FFFFFFF
 {
@@ -120,12 +120,12 @@ struct BSGS_valid_X BSGS(long long y, long long a, long long p)
 
 	if (flag)
 	{
-		result.valid = true;
+		result.valid = True;
 		result.x = x;
 	}
 	else
 	{
-		result.valid = false;
+		result.valid = False;
 		result.x = -1;
 	}
 

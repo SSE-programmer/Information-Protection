@@ -1,5 +1,5 @@
-#ifndef CRYPTLIB_H
-#define CRYPTLIB_H 
+#ifndef CRYPTBASELIB_H
+#define CRYPTBASELIB_H 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,12 +9,12 @@
 
 #define RANGE 1000
 
-typedef enum {false, true} bool;
+typedef enum boolean {False, True} boolean;
 
 struct BSGS_valid_X
 {
     long long x;
-    bool valid;
+    boolean valid;
 };
 
 void quickSort(long long **numbers, long long left, long long right);
