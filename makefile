@@ -10,7 +10,7 @@ all: main
    # - ./lab_1
 
 main: main.o cryptbaselib.o encryptionlib.o
-	$(CC) $(OBJURL)cryptlib.o $(OBJURL)encryptionlib.o $(OBJURL)main.o -o main -lm
+	$(CC) $(OBJURL)cryptbaselib.o $(OBJURL)encryptionlib.o $(OBJURL)main.o -o main -lm
 
 main.o: $(SOURCEURL)main.c
 	$(CC) $(CFLAGS) $(SOURCEURL)main.c -o $(OBJURL)main.o
