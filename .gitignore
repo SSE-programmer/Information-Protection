@@ -1,4 +1,5 @@
 /resourses
 /encrypt
 /temp
-/build/*
+/build
+/main
