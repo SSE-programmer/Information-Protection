@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "cryptbaselib.h"
 #include "encryptionlib.h"
+#include "digital_signature.h"
 
 #define BEGIN_COLOR_FUNCTION "\033[01;32m"
 #define END_COLOR_FUNCTION "\033[0m"
@@ -106,13 +107,14 @@ int main(int argc, char **argv)
 
         printf("Выберите действие:\n");
         printf("\t1. Показать результат работы базовых функций;\n");
-        printf("\t2. Зашифровать файл;\n");
-        printf("\t3. Расшифровать файл;\n");
-        printf("\t4. Выйти.\n");
+        printf("\t2. Зашифровать/расшифровать файл;\n");
+        printf("\t3. Подписать файл;\n");
+        printf("\t4. Проверить цифровую подпись;\n");
+        printf("\t5. Выйти.\n");
 
         scanf("%d", &item);
 
-        if (item == 4)
+        if (item == 5)
             break;
 
         switch (item)
@@ -132,7 +134,7 @@ int main(int argc, char **argv)
 
         case 2:
         {
-            system("mkdir -p encrypt");
+            //system("mkdir -p encrypt");
 
             char *filename;
 
@@ -181,10 +183,108 @@ int main(int argc, char **argv)
                 break;
             }
             }
+
+            break;
         }
 
         case 3:
+        {
+            char *filename;
+
+            filename = malloc(sizeof(char) * FILENAME_LENGTH);
+
+            printf("Введите путь к файлу: \n");
+            scanf("%s", filename);
+
+            printf("Выберите метод электронной подписи:\n");
+            printf("\t1. RSA;\n");
+            printf("\t2. Эль-Гамаля;\n");
+            printf("\t3. ГОСТ;\n");
+
+            int encode_type;
+
+            scanf("%d", &encode_type);
+
+            switch (encode_type)
+            {
+            case 1:
+            {
+                digital_signature_RSA(filename);
+
+                break;
+            }
+
+            case 2:
+            {
+                digital_signature_ElGamal(filename);
+
+                break;
+            }
+
+            case 3:
+            {
+                digital_signature_GOST(filename);
+
+                break;
+            }
+
+            default:
+                break;
+            }
+
             break;
+        }
+
+        case 4:
+        {
+            char *filename, *sig_filename;
+
+            filename = malloc(sizeof(char) * FILENAME_LENGTH);
+            sig_filename = malloc(sizeof(char) * FILENAME_LENGTH);
+
+            printf("Введите путь к файлу: \n");
+            scanf("%s", filename);
+            printf("Введите путь к электронной подписи: \n");
+            scanf("%s", sig_filename);
+
+            printf("Выберите метод электронной подписи:\n");
+            printf("\t1. RSA;\n");
+            printf("\t2. Эль-Гамаля;\n");
+            printf("\t3. ГОСТ;\n");
+
+            int encode_type;
+
+            scanf("%d", &encode_type);
+
+            switch (encode_type)
+            {
+            case 1:
+            {
+                test_digital_signature_RSA(filename, sig_filename);
+
+                break;
+            }
+
+            case 2:
+            {
+                test_digital_signature_ElGamal(filename, sig_filename);
+
+                break;
+            }
+
+            case 3:
+            {
+                test_digital_signature_GOST(filename, sig_filename);
+
+                break;
+            }
+
+            default:
+                break;
+            }
+
+            break;
+        }
 
         default:
             break;

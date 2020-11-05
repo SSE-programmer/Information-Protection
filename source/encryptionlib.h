@@ -7,6 +7,7 @@
 #include <math.h>
 #include <time.h>
 #include <inttypes.h>
+#include "cryptbaselib.h"
 
 #define FILENAME_LENGTH 256
 

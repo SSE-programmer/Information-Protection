@@ -1,5 +1,5 @@
 #include "encryptionlib.h"
-#include "cryptbaselib.h"
+
 
 FILE *open_file(const char *name)
 {
@@ -212,14 +212,14 @@ int encryption_RSA(char *filename)
 	do
 	{
 
-		p = rand() % (int)sqrt(10000);
+		p = rand() % 10000;
 
 	} while (isPrime(p) < 1);
 
 	do
 	{
 
-		q = rand() % (int)sqrt(10000);
+		q = rand() % 10000;
 
 	} while (isPrime(q) < 1);
 
