@@ -2,12 +2,7 @@
 #include "cryptbaselib.h"
 #include "encryptionlib.h"
 #include "digital_signature.h"
-
-#define BEGIN_COLOR_FUNCTION "\033[01;32m"
-#define END_COLOR_FUNCTION "\033[0m"
-
-#define BEGIN_COLOR_DATE "\033[01;32m"
-#define END_COLOR_DATE "\033[0m"
+#include "mental_poker.h"
 
 int output_DataAndTime()
 {
@@ -16,20 +11,15 @@ int output_DataAndTime()
     return 0;
 }
 
-/*Возведение числа в степень по модулю*/
 int test_FastPow()
 {
     printf("\n%sФункция:%s %s\n", BEGIN_COLOR_FUNCTION, __FUNCTION__, END_COLOR_FUNCTION);
 
     long long x, y, n;
 
-    /*  x = rand() % 1000000000;
+    x = rand() % 1000000000;
     y = rand() % 1000000000;
-    n = rand() % 1000000000;*/
-
-    x = 7;
-    y = 8;
-    n = 12;
+    n = rand() % 1000000000;
 
     printf("Результат возведения числа %lld в степень %lld по модулю %lld: %lld;\n", x, y, n, FME(x, y, n));
 
@@ -110,11 +100,12 @@ int main(int argc, char **argv)
         printf("\t2. Зашифровать/расшифровать файл;\n");
         printf("\t3. Подписать файл;\n");
         printf("\t4. Проверить цифровую подпись;\n");
-        printf("\t5. Выйти.\n");
+        printf("\t5. Ментальный покер;\n");
+        printf("\t6. Выйти.\n");
 
         scanf("%d", &item);
 
-        if (item == 5)
+        if (item == 6)
             break;
 
         switch (item)
@@ -134,8 +125,6 @@ int main(int argc, char **argv)
 
         case 2:
         {
-            //system("mkdir -p encrypt");
-
             char *filename;
 
             filename = malloc(sizeof(char) * FILENAME_LENGTH);
@@ -284,6 +273,11 @@ int main(int argc, char **argv)
             }
 
             break;
+        }
+
+        case 5:
+        {
+            start_poker();
         }
 
         default:
