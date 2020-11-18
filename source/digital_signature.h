@@ -7,9 +7,6 @@
 
 #define SHA512_HASH_LENGTH 64
 
-#define BEGIN_COLOR_FUNCTION "\033[01;32m"
-#define END_COLOR_FUNCTION "\033[0m"
-
 long long mod(long long x, long long p);
 
 int digital_signature_RSA(char *filename);

@@ -7,6 +7,12 @@
 #include <time.h>
 #include <inttypes.h>
 
+#define BEGIN_COLOR_FUNCTION "\033[01;32m"
+#define END_COLOR_FUNCTION "\033[0m"
+
+#define BEGIN_COLOR_DATE "\033[01;32m"
+#define END_COLOR_DATE "\033[0m"
+
 #define RANGE 1000
 
 typedef enum boolean {False, True} boolean;
