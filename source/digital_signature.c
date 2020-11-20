@@ -1,19 +1,5 @@
 #include "digital_signature.h"
 
-long long mod(long long x, long long p)
-{
-    int result = x % p;
-    int l = 0, r = 0;
-
-    l = result < 0 ? -1 : 1;
-    r = p < 0 ? -1 : 1;
-
-    if (l * r < 0)
-        result += p;
-
-    return result;
-}
-
 int digital_signature_RSA(char *filename)
 {
     SHA512_CTX ctx;
