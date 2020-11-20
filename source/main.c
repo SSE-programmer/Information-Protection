@@ -3,6 +3,7 @@
 #include "encryptionlib.h"
 #include "digital_signature.h"
 #include "mental_poker.h"
+#include "blind_signature.h"
 
 int output_DataAndTime()
 {
@@ -101,11 +102,12 @@ int main(int argc, char **argv)
         printf("\t3. Подписать файл;\n");
         printf("\t4. Проверить цифровую подпись;\n");
         printf("\t5. Ментальный покер;\n");
-        printf("\t6. Выйти.\n");
+        printf("\t6. Слепое голосование;\n");
+        printf("\t7. Выйти.\n");
 
         scanf("%d", &item);
 
-        if (item == 6)
+        if (item == 7)
             break;
 
         switch (item)
@@ -278,6 +280,51 @@ int main(int argc, char **argv)
         case 5:
         {
             start_poker();
+
+            break;
+        }
+
+        case 6:
+        {
+            int item;
+
+            printf("Выберите действие:\n");
+            printf("\t1. Инициализировать данные сервера;\n");
+            printf("\t2. Проголосовать;\n");
+
+            scanf("%d", &item);
+
+            switch (item)
+            {
+            case 1:
+            {
+                init_server();
+                
+                break;
+            }
+
+            case 2:
+            {
+                int id;
+
+                printf("Введите ваш идентификатор (6 цифр):\n");
+                scanf("%d", &id);
+                
+                if (id < 100000 || id > 999999)
+                {
+                    printf("Вы ввели некорректный идентификатор\n");
+
+                    break;
+                }
+
+                client(id);
+
+                break;
+            }
+
+            default:
+                break;
+            }
         }
 
         default:
