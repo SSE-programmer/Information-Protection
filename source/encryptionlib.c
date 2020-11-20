@@ -1,26 +1,5 @@
 #include "encryptionlib.h"
 
-
-FILE *open_file(const char *name)
-{
-	FILE *f;
-
-	if ((f = fopen(name, "rb")) == NULL)
-	{
-		printf("Не удалось открыть файл\n");
-		exit(201);
-	}
-
-	return f;
-}
-
-int close_file(FILE *name)
-{
-	fclose(name);
-
-	return 0;
-}
-
 char *concat(char *s1, char *s2)
 {
 	char *result = malloc(strlen(s1) + strlen(s2) + 1);

@@ -1,13 +1,17 @@
 #ifndef DIGITAL_SIGNATURE_H
 #define DIGITAL_SIGNATURE_H 
 
-#include "encryptionlib.h"
-#include "cryptbaselib.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <time.h>
+#include <inttypes.h>
 #include <openssl/sha.h>
 
-#define SHA512_HASH_LENGTH 64
+#include "cryptbaselib.h"
 
-long long mod(long long x, long long p);
+#define SHA512_HASH_LENGTH 64
 
 int digital_signature_RSA(char *filename);
 int digital_signature_ElGamal(char *filename);

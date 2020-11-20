@@ -1,5 +1,39 @@
 #include "cryptbaselib.h"
 
+FILE *open_file(const char *name)
+{
+	FILE *f;
+
+	if ((f = fopen(name, "rb")) == NULL)
+	{
+		printf("Не удалось открыть файл\n");
+		exit(201);
+	}
+
+	return f;
+}
+
+int close_file(FILE *name)
+{
+	fclose(name);
+
+	return 0;
+}
+
+long long mod(long long x, long long p)
+{
+    int result = x % p;
+    int l = 0, r = 0;
+
+    l = result < 0 ? -1 : 1;
+    r = p < 0 ? -1 : 1;
+
+    if (l * r < 0)
+        result += p;
+
+    return result;
+}
+
 void quickSort(long long **as, long long left, long long right) //& 0x7FFFFFFF
 {
 	long long pivot, pivot1;

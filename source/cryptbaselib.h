@@ -23,6 +23,11 @@ struct BSGS_valid_X
     boolean valid;
 };
 
+FILE *open_file(const char *name);
+int close_file(FILE *name);
+
+long long mod(long long x, long long p);
+
 void quickSort(long long **numbers, long long left, long long right);
 int isPrime(long long p);
 

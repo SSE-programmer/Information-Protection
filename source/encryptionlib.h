@@ -7,12 +7,12 @@
 #include <math.h>
 #include <time.h>
 #include <inttypes.h>
+
 #include "cryptbaselib.h"
 
 #define FILENAME_LENGTH 256
 
-FILE *open_file(const char *name);
-int close_file(FILE *name);
+
 char* concat(char *s1, char *s2);
 
 long long get_prime();
